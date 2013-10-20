@@ -111,6 +111,7 @@ cdef extern from "enet/enet.h":
         enet_uint32 totalSentPackets
         enet_uint32 totalReceivedData
         enet_uint32 totalReceivedPackets
+        size_t duplicatePeers
 
     ctypedef enum ENetEventType:
         ENET_EVENT_TYPE_NONE = 0
@@ -999,6 +1000,13 @@ cdef class Host:
 
         def __set__(self, value):
             self._enet_host.totalReceivedPackets = value
+
+    property duplicatePeers:
+        def __get__(self):
+            return self._enet_host.duplicatePeers
+
+        def __set__(self, value):
+            self._enet_host.duplicatePeers = value
 
 def _enet_atexit():
     enet_deinitialize()
