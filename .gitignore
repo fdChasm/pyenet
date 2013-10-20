@@ -34,3 +34,8 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+.svn
+enet
+enet-1.3.9
+enet.c
